@@ -24,13 +24,13 @@ def send_order():
     order_to_json = json.dumps(new_order.__dict__)
     ## send new order to food ordering service
     send = requests.post('http://127.0.0.1:3800/client', json = order_to_json)
-    print(send.json())
+    ##print(send.json())
 
 def threads():
     orders = [threading.Thread(target=send_order) for i in range(10)]
     for order in orders:
         order.start()
 
-print('List of orders sent by the client: ')
+##print('List of orders sent by the client: ')
 threads()
 
